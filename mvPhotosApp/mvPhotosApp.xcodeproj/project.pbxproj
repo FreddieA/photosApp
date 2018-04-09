@@ -10,6 +10,8 @@
 		42EE73E7207AA25300C32E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE73E6207AA25300C32E17 /* AppDelegate.swift */; };
 		42EE73F1207AA25400C32E17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42EE73F0207AA25400C32E17 /* Assets.xcassets */; };
 		42EE73F4207AA25400C32E17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42EE73F2207AA25400C32E17 /* LaunchScreen.storyboard */; };
+		42EE7400207BAE9800C32E17 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE73FF207BAE9800C32E17 /* FilterViewController.swift */; };
+		42EE7402207BAEA100C32E17 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42EE7401207BAEA100C32E17 /* FilterViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,8 @@
 		42EE73F0207AA25400C32E17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42EE73F3207AA25400C32E17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42EE73F5207AA25400C32E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42EE73FF207BAE9800C32E17 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		42EE7401207BAEA100C32E17 /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,12 +54,30 @@
 		42EE73E5207AA25300C32E17 /* mvPhotosApp */ = {
 			isa = PBXGroup;
 			children = (
+				42EE73FD207BAE6300C32E17 /* ViewControllers */,
 				42EE73E6207AA25300C32E17 /* AppDelegate.swift */,
 				42EE73F0207AA25400C32E17 /* Assets.xcassets */,
 				42EE73F2207AA25400C32E17 /* LaunchScreen.storyboard */,
 				42EE73F5207AA25400C32E17 /* Info.plist */,
 			);
 			path = mvPhotosApp;
+			sourceTree = "<group>";
+		};
+		42EE73FD207BAE6300C32E17 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				42EE73FE207BAE7400C32E17 /* FilterViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		42EE73FE207BAE7400C32E17 /* FilterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				42EE73FF207BAE9800C32E17 /* FilterViewController.swift */,
+				42EE7401207BAEA100C32E17 /* FilterViewController.xib */,
+			);
+			path = FilterViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42EE73F4207AA25400C32E17 /* LaunchScreen.storyboard in Resources */,
+				42EE7402207BAEA100C32E17 /* FilterViewController.xib in Resources */,
 				42EE73F1207AA25400C32E17 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42EE7400207BAE9800C32E17 /* FilterViewController.swift in Sources */,
 				42EE73E7207AA25300C32E17 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
