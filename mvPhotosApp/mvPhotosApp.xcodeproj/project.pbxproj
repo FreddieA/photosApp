@@ -15,6 +15,10 @@
 		42EE7407207BB64100C32E17 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE7406207BB64100C32E17 /* ImageProvider.swift */; };
 		42EE7409207BB70300C32E17 /* GalleryImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE7408207BB70300C32E17 /* GalleryImageProvider.swift */; };
 		42EE740B207BB71300C32E17 /* CameraImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE740A207BB71300C32E17 /* CameraImageProvider.swift */; };
+		C641B1E8207C8F36003C3C3D /* FilterImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641B1E7207C8F36003C3C3D /* FilterImageProcessor.swift */; };
+		C641B1EA207CCC94003C3C3D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641B1E9207CCC94003C3C3D /* AsyncOperation.swift */; };
+		C641B1ED207CCDC5003C3C3D /* ImageFilterOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641B1EC207CCDC5003C3C3D /* ImageFilterOperation.swift */; };
+		C641B1EF207CD98B003C3C3D /* ImagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641B1EE207CD98B003C3C3D /* ImagesManager.swift */; };
 		C655E68A207C762000C25A9F /* LocalImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655E689207C762000C25A9F /* LocalImageProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +33,10 @@
 		42EE7406207BB64100C32E17 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
 		42EE7408207BB70300C32E17 /* GalleryImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryImageProvider.swift; sourceTree = "<group>"; };
 		42EE740A207BB71300C32E17 /* CameraImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageProvider.swift; sourceTree = "<group>"; };
+		C641B1E7207C8F36003C3C3D /* FilterImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterImageProcessor.swift; sourceTree = "<group>"; };
+		C641B1E9207CCC94003C3C3D /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		C641B1EC207CCDC5003C3C3D /* ImageFilterOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilterOperation.swift; sourceTree = "<group>"; };
+		C641B1EE207CD98B003C3C3D /* ImagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesManager.swift; sourceTree = "<group>"; };
 		C655E689207C762000C25A9F /* LocalImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalImageProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +100,7 @@
 		42EE7404207BB61C00C32E17 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C641B1E6207C8E9F003C3C3D /* ImagesManager */,
 				42EE7405207BB62D00C32E17 /* ImageProviders */,
 			);
 			path = Utils;
@@ -106,6 +115,25 @@
 				C655E689207C762000C25A9F /* LocalImageProvider.swift */,
 			);
 			path = ImageProviders;
+			sourceTree = "<group>";
+		};
+		C641B1E6207C8E9F003C3C3D /* ImagesManager */ = {
+			isa = PBXGroup;
+			children = (
+				C641B1EE207CD98B003C3C3D /* ImagesManager.swift */,
+				C641B1EB207CCDA8003C3C3D /* Operations */,
+				C641B1E7207C8F36003C3C3D /* FilterImageProcessor.swift */,
+			);
+			path = ImagesManager;
+			sourceTree = "<group>";
+		};
+		C641B1EB207CCDA8003C3C3D /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				C641B1E9207CCC94003C3C3D /* AsyncOperation.swift */,
+				C641B1EC207CCDC5003C3C3D /* ImageFilterOperation.swift */,
+			);
+			path = Operations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,11 +207,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C641B1ED207CCDC5003C3C3D /* ImageFilterOperation.swift in Sources */,
 				42EE7400207BAE9800C32E17 /* FilterViewController.swift in Sources */,
 				42EE73E7207AA25300C32E17 /* AppDelegate.swift in Sources */,
 				C655E68A207C762000C25A9F /* LocalImageProvider.swift in Sources */,
 				42EE740B207BB71300C32E17 /* CameraImageProvider.swift in Sources */,
+				C641B1E8207C8F36003C3C3D /* FilterImageProcessor.swift in Sources */,
+				C641B1EF207CD98B003C3C3D /* ImagesManager.swift in Sources */,
 				42EE7407207BB64100C32E17 /* ImageProvider.swift in Sources */,
+				C641B1EA207CCC94003C3C3D /* AsyncOperation.swift in Sources */,
 				42EE7409207BB70300C32E17 /* GalleryImageProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
