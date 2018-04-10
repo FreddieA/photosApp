@@ -9,5 +9,54 @@
 import UIKit
 
 class FilterViewController: UIViewController {
+
+    @IBOutlet weak var selectedImageView: UIImageView!
+
+    private var imageProviders: [ImageProvider] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        imageProviders = [GalleryImageProvider(self), CameraImageProvider(self)]
+    }
     
+    @IBAction func selectImageAction(_ sender: UIButton) {
+
+        let controller = UIAlertController.init(title: "Select image from:", message: nil, preferredStyle: .actionSheet)
+        imageProviders.forEach { provider in
+            guard provider.sourceIsAvailiable() else {
+                return
+            }
+
+            controller.addAction(UIAlertAction.init(title: provider.title(),
+                                                    style: .default,
+                                                    handler: { [weak self] action in
+                                                        self?.retrieveImageIfPermitted(provider)
+            }))
+        }
+        controller.addAction(UIAlertAction.init(title: "Cancel", style: .destructive))
+        self.present(controller, animated: true)
+    }
+
+    private func retrieveImageIfPermitted(_ provider: ImageProvider) {
+        if !provider.hasPermission() {
+            provider.requestPermission({ granted in
+                if granted {
+                    self.retrieveImage(provider)
+                }
+            })
+        } else {
+            retrieveImage(provider)
+        }
+    }
+
+    private func retrieveImage(_ provider: ImageProvider) {
+        provider.retrieveImage { image in
+            self.handleImageSelection(image)
+        }
+    }
+
+    private func handleImageSelection(_ image: UIImage?) {
+        selectedImageView.image = image
+    }
 }

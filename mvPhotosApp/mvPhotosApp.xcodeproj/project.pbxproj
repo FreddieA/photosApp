@@ -12,6 +12,10 @@
 		42EE73F4207AA25400C32E17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42EE73F2207AA25400C32E17 /* LaunchScreen.storyboard */; };
 		42EE7400207BAE9800C32E17 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE73FF207BAE9800C32E17 /* FilterViewController.swift */; };
 		42EE7402207BAEA100C32E17 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42EE7401207BAEA100C32E17 /* FilterViewController.xib */; };
+		42EE7407207BB64100C32E17 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE7406207BB64100C32E17 /* ImageProvider.swift */; };
+		42EE7409207BB70300C32E17 /* GalleryImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE7408207BB70300C32E17 /* GalleryImageProvider.swift */; };
+		42EE740B207BB71300C32E17 /* CameraImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE740A207BB71300C32E17 /* CameraImageProvider.swift */; };
+		C655E68A207C762000C25A9F /* LocalImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655E689207C762000C25A9F /* LocalImageProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		42EE73F5207AA25400C32E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42EE73FF207BAE9800C32E17 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		42EE7401207BAEA100C32E17 /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		42EE7406207BB64100C32E17 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		42EE7408207BB70300C32E17 /* GalleryImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryImageProvider.swift; sourceTree = "<group>"; };
+		42EE740A207BB71300C32E17 /* CameraImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageProvider.swift; sourceTree = "<group>"; };
+		C655E689207C762000C25A9F /* LocalImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalImageProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 		42EE73E5207AA25300C32E17 /* mvPhotosApp */ = {
 			isa = PBXGroup;
 			children = (
+				42EE7404207BB61C00C32E17 /* Utils */,
 				42EE73FD207BAE6300C32E17 /* ViewControllers */,
 				42EE73E6207AA25300C32E17 /* AppDelegate.swift */,
 				42EE73F0207AA25400C32E17 /* Assets.xcassets */,
@@ -78,6 +87,25 @@
 				42EE7401207BAEA100C32E17 /* FilterViewController.xib */,
 			);
 			path = FilterViewController;
+			sourceTree = "<group>";
+		};
+		42EE7404207BB61C00C32E17 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				42EE7405207BB62D00C32E17 /* ImageProviders */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		42EE7405207BB62D00C32E17 /* ImageProviders */ = {
+			isa = PBXGroup;
+			children = (
+				42EE7406207BB64100C32E17 /* ImageProvider.swift */,
+				42EE7408207BB70300C32E17 /* GalleryImageProvider.swift */,
+				42EE740A207BB71300C32E17 /* CameraImageProvider.swift */,
+				C655E689207C762000C25A9F /* LocalImageProvider.swift */,
+			);
+			path = ImageProviders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +181,10 @@
 			files = (
 				42EE7400207BAE9800C32E17 /* FilterViewController.swift in Sources */,
 				42EE73E7207AA25300C32E17 /* AppDelegate.swift in Sources */,
+				C655E68A207C762000C25A9F /* LocalImageProvider.swift in Sources */,
+				42EE740B207BB71300C32E17 /* CameraImageProvider.swift in Sources */,
+				42EE7407207BB64100C32E17 /* ImageProvider.swift in Sources */,
+				42EE7409207BB70300C32E17 /* GalleryImageProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
