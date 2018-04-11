@@ -8,7 +8,7 @@
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="filters" inverseEntity="Image" syncable="YES"/>
     </entity>
     <entity name="Image" representedClassName="Image" parentEntity="BaseObject" syncable="YES" codeGenerationType="class">
-        <attribute name="imageData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="filters" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Filter" inverseName="images" inverseEntity="Filter" syncable="YES"/>
     </entity>
     <elements>

@@ -34,9 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = DataBaseHelper.shared
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         do {
-            try DataBaseHelper.shared.writerContext.save()
+            try DataBaseHelper.shared.mainContext.save()
         } catch {
             debugPrint(error)
         }

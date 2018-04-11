@@ -32,6 +32,8 @@ import CoreImage
 
 extension Filter {
 
+    
+
     var filterType: FilterType {
         get {
             return FilterType(rawValue: type)!

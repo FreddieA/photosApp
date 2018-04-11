@@ -14,16 +14,20 @@ class ImageFilterOperation: AsyncOperation {
     private var image: UIImage
     private var filter: CoreImageFilter
     private var timer: Timer?
-    private var progressCallback: (ImageFilterOperation) -> Void
+    var progressCallback: ((ImageFilterOperation) -> Void)?
 
     private var fakeTimeout: Double = 0.0
     private var elapsedTime: Double = 0.0
 
-    var resultingImage: CIImage {
-        guard let ciimage = CIImage.init(image: image) else {
-            return CIImage.empty()
+    var resultingImageData: Data? {
+        guard let ciImage: CIImage = CIImage(image: image) else {
+            return nil
         }
-        return ciimage
+        if let cgImage = CIContext(options: nil).createCGImage(ciImage, from: ciImage.extent) {
+            let image = UIImage(cgImage: cgImage)
+            return UIImagePNGRepresentation(image)
+        }
+        return nil
     }
     var progress: Double {
         return elapsedTime / fakeTimeout
@@ -32,10 +36,9 @@ class ImageFilterOperation: AsyncOperation {
         return "(operation\(fakeTimeout))"
     }
 
-    init(filterToApply: CoreImageFilter, originalImage: UIImage, progress: @escaping (ImageFilterOperation) -> Void) {
+    init(filterToApply: CoreImageFilter, originalImage: UIImage) {
         image = originalImage
         filter = filterToApply
-        progressCallback = progress
         fakeTimeout = Double(arc4random_uniform(26) + 5)
     }
 
@@ -59,6 +62,6 @@ class ImageFilterOperation: AsyncOperation {
             timer.invalidate()
             self.state = .finished
         }
-        progressCallback(self)
+        progressCallback?(self)
     }
 }

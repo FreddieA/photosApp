@@ -22,6 +22,15 @@ class FilterViewController: UIViewController {
         imageProviders = [GalleryImageProvider(self), CameraImageProvider(self)]
         imagesTableView.dataSource = imagesManager
         imagesTableView.delegate = self
+
+        imagesManager.imagesTableView = imagesTableView
+        imagesManager.refresh()
+    }
+
+    @IBAction func mirrorAction(_ sender: UIButton) {
+        if let image = selectedImageView.image {
+            imagesManager.addImage(image: image, filter: .mirror)
+        }
     }
     
     @IBAction func selectImageAction(_ sender: UIButton) {
