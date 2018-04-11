@@ -16,13 +16,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let navController = UINavigationController.init(rootViewController: FilterViewController())
+        setUpViewHirerachy()
+        setUpCoreData()
         
+        return true
+    }
+
+    private func setUpViewHirerachy() {
+        let navController = UINavigationController.init(rootViewController: FilterViewController())
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
-        
-        return true
+    }
+
+    private func setUpCoreData() {
+        _ = DataBaseHelper.shared
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        do {
+            try DataBaseHelper.shared.writerContext.save()
+        } catch {
+            debugPrint(error)
+        }
     }
 }
 

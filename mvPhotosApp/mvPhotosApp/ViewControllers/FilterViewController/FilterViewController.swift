@@ -11,13 +11,17 @@ import UIKit
 class FilterViewController: UIViewController {
 
     @IBOutlet weak var selectedImageView: UIImageView!
+    @IBOutlet weak var imagesTableView: UITableView!
 
+    private var imagesManager = ImagesManager()
     private var imageProviders: [ImageProvider] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         imageProviders = [GalleryImageProvider(self), CameraImageProvider(self)]
+        imagesTableView.dataSource = imagesManager
+        imagesTableView.delegate = self
     }
     
     @IBAction func selectImageAction(_ sender: UIButton) {
@@ -58,5 +62,11 @@ class FilterViewController: UIViewController {
 
     private func handleImageSelection(_ image: UIImage?) {
         selectedImageView.image = image
+    }
+}
+
+extension FilterViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
     }
 }

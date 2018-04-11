@@ -19,11 +19,11 @@ class ImageFilterOperation: AsyncOperation {
     private var fakeTimeout: Double = 0.0
     private var elapsedTime: Double = 0.0
 
-    var resultingImage: UIImage {
+    var resultingImage: CIImage {
         guard let ciimage = CIImage.init(image: image) else {
-            return UIImage(ciImage: CIImage.empty())
+            return CIImage.empty()
         }
-        return filter.applyToImage(ciimage)
+        return ciimage
     }
     var progress: Double {
         return elapsedTime / fakeTimeout
