@@ -37,4 +37,14 @@ class GalleryImageProvider: LocalImageProvider {
         picker.delegate = self
         ownerController?.present(picker, animated: true)
     }
+
+    func saveImageToGallery(image: UIImage) {
+        do {
+            try PHPhotoLibrary.shared().performChangesAndWait {
+                PHAssetChangeRequest.creationRequestForAsset(from: image)
+            }
+        } catch {
+            debugPrint("Unexpected error occured: \(error)")
+        }
+    }
 }

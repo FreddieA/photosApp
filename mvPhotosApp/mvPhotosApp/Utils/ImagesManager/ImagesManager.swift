@@ -13,9 +13,9 @@ class ImagesManager: NSObject {
     
     weak var imagesTableView: UITableView?
     
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Image> = {
+    lazy var fetchedResultsController: NSFetchedResultsController<Image> = {
         let request: NSFetchRequest<Image> = Image.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Image.uid), ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Image.createdAt), ascending: false)]
         let controller = NSFetchedResultsController(fetchRequest: request,
                                                     managedObjectContext: DataBaseHelper.shared.writerContext,
                                                     sectionNameKeyPath: nil,
@@ -26,10 +26,21 @@ class ImagesManager: NSObject {
     
     private var ongoingFilterOperations: [NSManagedObjectID : ImageFilterOperation] = [:]
     
+    func deleteObject(at indexPath: IndexPath) {
+        do {
+            let context = fetchedResultsController.managedObjectContext
+            context.delete(fetchedResultsController.object(at: indexPath))
+            try context.save()
+        } catch {
+            debugPrint("Unexpected error occured: \(error)")
+        }
+    }
+    
     func addImage(image: UIImage, filter: FilterType) {
         let context = fetchedResultsController.managedObjectContext
         let imageObject = NSEntityDescription.insertNewObject(forEntityName: "Image", into: context) as! Image
         imageObject.uid = UUID.init().uuidString
+        imageObject.createdAt = Date()
         
         let operation = ImageFilterOperation(filterToApply: filter, originalImage: image)
         operation.completionBlock = { [weak self, imageObject] in
@@ -108,17 +119,25 @@ extension ImagesManager: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.init(style: .default, reuseIdentifier: "ImageTableViewCell")
         
         let image = fetchedResultsController.object(at: indexPath)
         if let operation = ongoingFilterOperations[image.objectID] {
+            
+            let cell: FilterProgressTableViewCell = tableView.dequeueReusableCell(
+                withIdentifier: "FilterProgressTableViewCell", for: indexPath) as! FilterProgressTableViewCell
             operation.progressCallback = { [weak cell] operation in
-                cell?.textLabel?.text = "\(operation.progress)"
+                cell?.updateProgress(progress: operation.progress)
             }
+            return cell
         } else if let data = image.imageData {
-            cell.imageView?.image = UIImage(data: data)
+            
+            let cell: ImageTableViewCell = tableView.dequeueReusableCell(
+                withIdentifier: "ImageTableViewCell", for: indexPath) as! ImageTableViewCell
+            
+            cell.filteredImageView.image = UIImage(data: data)
+            return cell
         }
-        return cell
+        return UITableViewCell()
     }
 }
 

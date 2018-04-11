@@ -22,6 +22,10 @@
 		C641B1F3207DA091003C3C3D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C641B1F1207DA091003C3C3D /* Model.xcdatamodeld */; };
 		C641B1F5207DA37B003C3C3D /* Filter+CoreImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641B1F4207DA37B003C3C3D /* Filter+CoreImage.swift */; };
 		C641B1F7207DAB1E003C3C3D /* DataBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641B1F6207DAB1E003C3C3D /* DataBaseHelper.swift */; };
+		C641B200207DFDBE003C3C3D /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C641B1FF207DFDBE003C3C3D /* ImageTableViewCell.xib */; };
+		C641B202207DFDD8003C3C3D /* FilterProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C641B201207DFDD8003C3C3D /* FilterProgressTableViewCell.xib */; };
+		C641B204207DFE24003C3C3D /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641B203207DFE24003C3C3D /* ImageTableViewCell.swift */; };
+		C641B207207DFE98003C3C3D /* FilterProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641B206207DFE98003C3C3D /* FilterProgressTableViewCell.swift */; };
 		C655E68A207C762000C25A9F /* LocalImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655E689207C762000C25A9F /* LocalImageProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +47,10 @@
 		C641B1F2207DA091003C3C3D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		C641B1F4207DA37B003C3C3D /* Filter+CoreImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Filter+CoreImage.swift"; sourceTree = "<group>"; };
 		C641B1F6207DAB1E003C3C3D /* DataBaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseHelper.swift; sourceTree = "<group>"; };
+		C641B1FF207DFDBE003C3C3D /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
+		C641B201207DFDD8003C3C3D /* FilterProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterProgressTableViewCell.xib; sourceTree = "<group>"; };
+		C641B203207DFE24003C3C3D /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		C641B206207DFE98003C3C3D /* FilterProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterProgressTableViewCell.swift; sourceTree = "<group>"; };
 		C655E689207C762000C25A9F /* LocalImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalImageProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +135,7 @@
 		C641B1E6207C8E9F003C3C3D /* ImagesManager */ = {
 			isa = PBXGroup;
 			children = (
+				C641B1FE207DFD97003C3C3D /* Cells */,
 				C641B1EE207CD98B003C3C3D /* ImagesManager.swift */,
 				C641B1E7207C8F36003C3C3D /* CoreImageFilter.swift */,
 				C641B1EB207CCDA8003C3C3D /* Operations */,
@@ -201,6 +210,33 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		C641B1FE207DFD97003C3C3D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C641B205207DFE84003C3C3D /* ImageTableViewCell */,
+				C641B208207DFEA1003C3C3D /* FilterProgressTableViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		C641B205207DFE84003C3C3D /* ImageTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C641B203207DFE24003C3C3D /* ImageTableViewCell.swift */,
+				C641B1FF207DFDBE003C3C3D /* ImageTableViewCell.xib */,
+			);
+			path = ImageTableViewCell;
+			sourceTree = "<group>";
+		};
+		C641B208207DFEA1003C3C3D /* FilterProgressTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C641B206207DFE98003C3C3D /* FilterProgressTableViewCell.swift */,
+				C641B201207DFDD8003C3C3D /* FilterProgressTableViewCell.xib */,
+			);
+			path = FilterProgressTableViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -260,6 +296,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				42EE73F4207AA25400C32E17 /* LaunchScreen.storyboard in Resources */,
+				C641B200207DFDBE003C3C3D /* ImageTableViewCell.xib in Resources */,
+				C641B202207DFDD8003C3C3D /* FilterProgressTableViewCell.xib in Resources */,
 				42EE7402207BAEA100C32E17 /* FilterViewController.xib in Resources */,
 				42EE73F1207AA25400C32E17 /* Assets.xcassets in Resources */,
 			);
@@ -279,11 +317,13 @@
 				42EE73E7207AA25300C32E17 /* AppDelegate.swift in Sources */,
 				C655E68A207C762000C25A9F /* LocalImageProvider.swift in Sources */,
 				42EE740B207BB71300C32E17 /* CameraImageProvider.swift in Sources */,
+				C641B204207DFE24003C3C3D /* ImageTableViewCell.swift in Sources */,
 				C641B1E8207C8F36003C3C3D /* CoreImageFilter.swift in Sources */,
 				C641B1EF207CD98B003C3C3D /* ImagesManager.swift in Sources */,
 				42EE7407207BB64100C32E17 /* ImageProvider.swift in Sources */,
 				C641B1EA207CCC94003C3C3D /* AsyncOperation.swift in Sources */,
 				C641B1F3207DA091003C3C3D /* Model.xcdatamodeld in Sources */,
+				C641B207207DFE98003C3C3D /* FilterProgressTableViewCell.swift in Sources */,
 				42EE7409207BB70300C32E17 /* GalleryImageProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,12 +8,13 @@
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="filters" inverseEntity="Image" syncable="YES"/>
     </entity>
     <entity name="Image" representedClassName="Image" parentEntity="BaseObject" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="filters" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Filter" inverseName="images" inverseEntity="Filter" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Image" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="Filter" positionX="-54" positionY="9" width="128" height="75"/>
         <element name="BaseObject" positionX="-36" positionY="18" width="128" height="60"/>
+        <element name="Filter" positionX="-54" positionY="9" width="128" height="75"/>
+        <element name="Image" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

@@ -51,7 +51,7 @@ class ImageFilterOperation: AsyncOperation {
 
         self.state = .executing
 
-        timer = Timer.init(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer = Timer.init(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
     }
 
