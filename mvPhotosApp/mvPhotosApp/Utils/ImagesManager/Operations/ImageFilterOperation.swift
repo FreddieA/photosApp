@@ -12,6 +12,7 @@ import UIKit
 class ImageFilterOperation: AsyncOperation {
 
     private var image: UIImage
+    private var resultImage: UIImage?
     private var filter: CoreImageFilter
     private var timer: Timer?
     var progressCallback: ((ImageFilterOperation) -> Void)?
@@ -20,11 +21,12 @@ class ImageFilterOperation: AsyncOperation {
     private var elapsedTime: Double = 0.0
 
     var resultingImageData: Data? {
-        guard let ciImage: CIImage = CIImage(image: image) else {
+        guard let uiImage = resultImage else {
             return nil
         }
+
         if let cgImage = CIContext(options: nil).createCGImage(ciImage, from: ciImage.extent) {
-            let image = UIImage(cgImage: cgImage)
+
             return UIImagePNGRepresentation(image)
         }
         return nil
@@ -55,6 +57,12 @@ class ImageFilterOperation: AsyncOperation {
         RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
     }
 
+    override func main() {
+        super.main()
+
+        resultImage = filter.applyToImage(image)
+    }
+
     @objc private func updateTimer(timer: Timer) {
         elapsedTime += timer.timeInterval
 
@@ -63,5 +71,14 @@ class ImageFilterOperation: AsyncOperation {
             self.state = .finished
         }
         progressCallback?(self)
+    }
+}
+
+extension CIImage {
+
+    static func uiImage(from ciimage: CIImage) -> UIImage {
+        let context = CIContext()
+        let cgImage = context.createCGImage(ciimage, from: ciimage.extent)
+        return UIImage(cgImage: cgImage!)
     }
 }

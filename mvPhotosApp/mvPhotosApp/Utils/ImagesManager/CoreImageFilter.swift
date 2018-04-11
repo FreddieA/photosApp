@@ -13,5 +13,5 @@ protocol CoreImageFilter {
 
     var filterName: String { get }
     
-    func applyToImage(_ image: CIImage) -> CIImage
+    func applyToImage(_ image: UIImage) -> UIImage
 }
