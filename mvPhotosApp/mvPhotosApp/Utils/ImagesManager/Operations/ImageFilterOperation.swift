@@ -19,18 +19,13 @@ class ImageFilterOperation: AsyncOperation {
 
     private var fakeTimeout: Double = 0.0
     private var elapsedTime: Double = 0.0
+    
+    var error: Error?
 
     var resultingImageData: Data? {
-        guard let uiImage = resultImage else {
-            return nil
-        }
-
-        if let cgImage = CIContext(options: nil).createCGImage(ciImage, from: ciImage.extent) {
-
-            return UIImagePNGRepresentation(image)
-        }
-        return nil
+        return UIImageJPEGRepresentation(resultImage!, 0.0)
     }
+    
     var progress: Double {
         return elapsedTime / fakeTimeout
     }
@@ -59,8 +54,13 @@ class ImageFilterOperation: AsyncOperation {
 
     override func main() {
         super.main()
-
-        resultImage = filter.applyToImage(image)
+        guard let uiImage = filter.applyToImage(image) else {
+            error = NSError.init(domain: "core.image", code: 0, userInfo: nil)
+            
+            self.state = .finished
+            return
+        }
+        resultImage = uiImage
     }
 
     @objc private func updateTimer(timer: Timer) {

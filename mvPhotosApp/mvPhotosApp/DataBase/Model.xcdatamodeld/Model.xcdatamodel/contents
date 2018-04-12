@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="BaseObject" representedClassName="BaseObject" isAbstract="YES" syncable="YES" codeGenerationType="class">
-        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="Filter" representedClassName="Filter" parentEntity="BaseObject" syncable="YES" codeGenerationType="class">
-        <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="filters" inverseEntity="Image" syncable="YES"/>
-    </entity>
-    <entity name="Image" representedClassName="Image" parentEntity="BaseObject" syncable="YES" codeGenerationType="class">
+    <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <relationship name="filters" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Filter" inverseName="images" inverseEntity="Filter" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BaseObject" positionX="-36" positionY="18" width="128" height="60"/>
-        <element name="Filter" positionX="-54" positionY="9" width="128" height="75"/>
         <element name="Image" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

@@ -6,12 +6,8 @@
 //  Copyright © 2018 Mikhail Kirillov. All rights reserved.
 //
 
-import CoreImage
 import UIKit
 
 protocol CoreImageFilter {
-
-    var filterName: String { get }
-    
-    func applyToImage(_ image: UIImage) -> UIImage
+    func applyToImage(_ image: UIImage) -> UIImage?
 }

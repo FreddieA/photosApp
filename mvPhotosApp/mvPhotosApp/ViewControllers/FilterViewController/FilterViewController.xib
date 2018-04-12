@@ -15,6 +15,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterViewController" customModule="mvPhotosApp" customModuleProvider="target">
             <connections>
                 <outlet property="imagesTableView" destination="Zu5-Iv-XSV" id="e23-g3-RnO"/>
+                <outlet property="noImagesLabel" destination="MT7-m5-LAk" id="vyy-As-uNL"/>
                 <outlet property="selectedImageView" destination="NuF-Rt-CZz" id="MgN-v9-gM4"/>
                 <outlet property="view" destination="iN0-l3-epB" id="l3S-bf-DKW"/>
             </connections>
@@ -24,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zu5-Iv-XSV">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zu5-Iv-XSV">
                     <rect key="frame" x="0.0" y="219.5" width="375" height="447.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
@@ -41,8 +42,11 @@
                                         <constraint firstAttribute="width" secondItem="NuF-Rt-CZz" secondAttribute="height" multiplier="1:1" id="sRh-z8-t3e"/>
                                     </constraints>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gP-ri-nU6">
+                                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gP-ri-nU6">
                                     <rect key="frame" x="0.0" y="0.0" width="167.5" height="167.5"/>
+                                    <state key="normal" title="Tap to select">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                     <connections>
                                         <action selector="selectImageAction:" destination="-1" eventType="touchUpInside" id="shk-p2-v0i"/>
                                     </connections>
@@ -69,9 +73,12 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnw-LW-VAF">
                                             <rect key="frame" x="0.0" y="0.0" width="167.5" height="50.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="Rotate">
+                                            <state key="normal" title="Flip left">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="rotateAction:" destination="-1" eventType="touchUpInside" id="Swf-Ne-mkP"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -88,9 +95,12 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcM-Fc-fia">
                                             <rect key="frame" x="0.0" y="0.0" width="167.5" height="50.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="Invert colors">
+                                            <state key="normal" title="Black and white">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="blackAndWiteAction:" destination="-1" eventType="touchUpInside" id="7dN-Um-yUY"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,14 +137,22 @@
                         </stackView>
                     </subviews>
                 </stackView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No filtered images yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MT7-m5-LAk">
+                    <rect key="frame" x="103" y="433" width="167.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Zu5-Iv-XSV" firstAttribute="top" secondItem="bqG-ra-jh2" secondAttribute="bottom" constant="16" id="0n3-LL-sAM"/>
                 <constraint firstItem="Zu5-Iv-XSV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9eE-1u-MxP"/>
+                <constraint firstItem="MT7-m5-LAk" firstAttribute="centerX" secondItem="Zu5-Iv-XSV" secondAttribute="centerX" id="9zE-8O-b6d"/>
                 <constraint firstItem="Zu5-Iv-XSV" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Jcy-Te-AaY"/>
                 <constraint firstItem="bqG-ra-jh2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="Kcj-fd-PNN"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Zu5-Iv-XSV" secondAttribute="trailing" id="ZDr-Ys-gPB"/>
+                <constraint firstItem="MT7-m5-LAk" firstAttribute="centerY" secondItem="Zu5-Iv-XSV" secondAttribute="centerY" id="bY3-d1-A4J"/>
                 <constraint firstItem="bqG-ra-jh2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="blS-Gi-q8p"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bqG-ra-jh2" secondAttribute="trailing" constant="16" id="boO-ll-sMS"/>
             </constraints>

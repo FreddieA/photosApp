@@ -12,6 +12,7 @@ import UIKit
 class ImagesManager: NSObject {
     
     weak var imagesTableView: UITableView?
+    weak var noImagesLabel: UILabel?
     
     lazy var fetchedResultsController: NSFetchedResultsController<Image> = {
         let request: NSFetchRequest<Image> = Image.fetchRequest()
@@ -97,7 +98,11 @@ extension ImagesManager: NSFetchedResultsControllerDelegate {
         guard let tableView = imagesTableView else {
             return
         }
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            if let objects = self?.fetchedResultsController.fetchedObjects {
+                self?.noImagesLabel?.isHidden = !objects.isEmpty
+            }
+            
             switch type {
             case .insert:
                 tableView.insertRows(at: [newIndexPath!], with: .none)
@@ -125,19 +130,14 @@ extension ImagesManager: UITableViewDataSource {
             
             let cell: FilterProgressTableViewCell = tableView.dequeueReusableCell(
                 withIdentifier: "FilterProgressTableViewCell", for: indexPath) as! FilterProgressTableViewCell
-            operation.progressCallback = { [weak cell] operation in
-                cell?.updateProgress(progress: operation.progress)
-            }
+            cell.setOperation(operation)
             return cell
-        } else if let data = image.imageData {
-            
+        } else {
             let cell: ImageTableViewCell = tableView.dequeueReusableCell(
                 withIdentifier: "ImageTableViewCell", for: indexPath) as! ImageTableViewCell
-            
-            cell.filteredImageView.image = UIImage(data: data)
+            cell.setImageObject(object: image)
             return cell
         }
-        return UITableViewCell()
     }
 }
 

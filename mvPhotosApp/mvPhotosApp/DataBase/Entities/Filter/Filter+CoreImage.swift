@@ -10,60 +10,41 @@ import Foundation
 import CoreImage
 import UIKit
 
-@objc enum FilterType: Int32, CoreImageFilter {
+enum FilterType: CoreImageFilter {
     case mirror
-    case colorInverse
     case rotate
-
-    var filterName: String {
-        switch self {
-        case .mirror:
-            return "Mirror image"
-        case .colorInverse:
-            return "Invert image colors"
-        case .rotate:
-            return "Rotate image"
-        }
-    }
-
-    func applyToImage(_ image: UIImage) -> UIImage {
-        switch self {
-        case .mirror:
-            return affineTransformImage(image, CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0))
-        case .colorInverse:
-            return invertColors(image)
-        case .rotate:
-            return affineTransformImage(image, CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0))
-        }
-    }
-
-    private func invertColors(_ image: UIImage) -> UIImage {
-        let filter = CIFilter(name: "CIColorInvert")
-        filter?.setDefaults()
-        filter?.setValue(CIImage(image: image), forKey: kCIInputImageKey)
-        return UIImage.init(ciImage: filter!.outputImage!) 
-    }
-
-    private func affineTransformImage(_ image: UIImage, _ inputTransform: CGAffineTransform) -> UIImage {
-        let filter = CIFilter(name: "CIAffineTransform")
-        let inputTransformValue = NSValue(cgAffineTransform: inputTransform)
-        filter?.setDefaults()
-        filter?.setValue(CIImage(image: image), forKey: kCIInputImageKey)
-        filter?.setValue(inputTransformValue, forKey: kCIInputTransformKey)
-        return UIImage.init(ciImage: filter!.outputImage!)
-    }
-}
-
-extension Filter {
-
+    case blackAndWhite
     
-
-    var filterType: FilterType {
-        get {
-            return FilterType(rawValue: type)!
+    private var filterName: String {
+        switch self {
+        case .mirror:
+            return "CIAffineTransform"
+        case .rotate:
+            return "CIAffineTransform"
+        case .blackAndWhite:
+            return "CIColorMonochrome"
         }
-        set {
-            self.type = newValue.rawValue
+    }
+    
+    private var filterAttributes: [String : Any] {
+        switch self {
+        case .mirror:
+            return [kCIInputTransformKey : NSValue(cgAffineTransform: CGAffineTransform.init(scaleX: -1, y: 1))]
+        case .rotate:
+            return [kCIInputTransformKey : NSValue(cgAffineTransform: CGAffineTransform.init(rotationAngle: CGFloat.pi / 2))]
+        case .blackAndWhite:
+            return [kCIInputColorKey : CIColor.init(color: .white), kCIInputIntensityKey: NSNumber.init(value: 1)]
         }
+    }
+    
+    func applyToImage(_ image: UIImage) -> UIImage? {
+        if let ciimage = CIImage(image: image) {
+            let context = CIContext()
+            let resultCiImage = ciimage.applyingFilter(filterName, parameters: filterAttributes)
+            if let cgImage = context.createCGImage(resultCiImage, from: resultCiImage.extent) {
+                return UIImage.init(cgImage: cgImage)
+            }
+        }
+        return nil
     }
 }
