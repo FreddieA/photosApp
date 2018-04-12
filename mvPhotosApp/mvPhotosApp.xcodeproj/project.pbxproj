@@ -15,6 +15,7 @@
 		42EE7407207BB64100C32E17 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE7406207BB64100C32E17 /* ImageProvider.swift */; };
 		42EE7409207BB70300C32E17 /* GalleryImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE7408207BB70300C32E17 /* GalleryImageProvider.swift */; };
 		42EE740B207BB71300C32E17 /* CameraImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE740A207BB71300C32E17 /* CameraImageProvider.swift */; };
+		42EE740D207F190000C32E17 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 42EE740C207F18FB00C32E17 /* README.md */; };
 		C641B1E8207C8F36003C3C3D /* CoreImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641B1E7207C8F36003C3C3D /* CoreImageFilter.swift */; };
 		C641B1EA207CCC94003C3C3D /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641B1E9207CCC94003C3C3D /* AsyncOperation.swift */; };
 		C641B1ED207CCDC5003C3C3D /* ImageFilterOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641B1EC207CCDC5003C3C3D /* ImageFilterOperation.swift */; };
@@ -40,6 +41,7 @@
 		42EE7406207BB64100C32E17 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
 		42EE7408207BB70300C32E17 /* GalleryImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryImageProvider.swift; sourceTree = "<group>"; };
 		42EE740A207BB71300C32E17 /* CameraImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageProvider.swift; sourceTree = "<group>"; };
+		42EE740C207F18FB00C32E17 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../../README.md; sourceTree = "<group>"; };
 		C641B1E7207C8F36003C3C3D /* CoreImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImageFilter.swift; sourceTree = "<group>"; };
 		C641B1E9207CCC94003C3C3D /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		C641B1EC207CCDC5003C3C3D /* ImageFilterOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilterOperation.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		C641B1FB207DAE1D003C3C3D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				42EE740C207F18FB00C32E17 /* README.md */,
 				42EE73F5207AA25400C32E17 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -295,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42EE740D207F190000C32E17 /* README.md in Resources */,
 				42EE73F4207AA25400C32E17 /* LaunchScreen.storyboard in Resources */,
 				C641B200207DFDBE003C3C3D /* ImageTableViewCell.xib in Resources */,
 				C641B202207DFDD8003C3C3D /* FilterProgressTableViewCell.xib in Resources */,
@@ -461,7 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FQWPDVX8KC;
+				DEVELOPMENT_TEAM = HQFF7D88MD;
 				INFOPLIST_FILE = "mvPhotosApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -479,7 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FQWPDVX8KC;
+				DEVELOPMENT_TEAM = HQFF7D88MD;
 				INFOPLIST_FILE = "mvPhotosApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
